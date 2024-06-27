@@ -35,10 +35,7 @@ function addDivAttributes() {
     div.style.width = `${oneBlockSideLength}px`;
     div.style.height = `${oneBlockSideLength}px`;
     div.addEventListener("mouseover", () => {
-        div.style.backgroundColor = "pink";
-    })
-    div.addEventListener("mouseout", () => {
-        div.style.backgroundColor = "white";
+        div.style.backgroundColor = "red";
     })
 })
 }
