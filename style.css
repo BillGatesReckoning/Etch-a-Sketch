@@ -2,18 +2,11 @@
     width: 960px;
     height: 960px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.columnDiv {
-    display: block;
-    flex: 1 1 0;
+    flex-wrap: wrap;
 }
 
 .manyDiv {
     border-style: solid;
     border-width: 1px;
-    padding: 4px;
-    flex: 1 1 0;
+    box-sizing: border-box;
 }

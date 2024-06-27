@@ -3,7 +3,7 @@ createDivs(16);
 
 const gridCreateButton = document.querySelector("#gridCreate");
 gridCreateButton.addEventListener("click", () => {
-    let gridSize = prompt("Enter your desired grid size")
+    gridSize = prompt("Enter your desired grid size")
     if (gridSize > 1 && gridSize < 101) {
         createDivs(gridSize)
     }
@@ -17,14 +17,11 @@ function createDivs(size) {
     deleteGrid()
     const container = document.querySelector("#container");
     for (let i = 0; i < size; i++) {
-        const columnDiv = document.createElement("div");
-        columnDiv.setAttribute("class", "columnDiv")
         for (let j = 0; j < size; j++) {
             const div = document.createElement("div");
             div.setAttribute("class", "manyDiv");
-            columnDiv.appendChild(div);
+            container.appendChild(div);
         }
-        container.appendChild(columnDiv);
     }
     addDivAttributes()
     return
@@ -33,12 +30,15 @@ function createDivs(size) {
 
 function addDivAttributes() {
     const divs = document.querySelectorAll(".manyDiv");
+    const oneBlockSideLength = Math.sqrt((960 * 960) / (gridSize * gridSize));
     divs.forEach((div) => {
+    div.style.width = `${oneBlockSideLength}px`;
+    div.style.height = `${oneBlockSideLength}px`;
     div.addEventListener("mouseover", () => {
-        div.setAttribute("style", "background-color: pink;")
+        div.style.backgroundColor = "pink";
     })
     div.addEventListener("mouseout", () => {
-        div.setAttribute("style", "background-color: white;")
+        div.style.backgroundColor = "white";
     })
 })
 }
