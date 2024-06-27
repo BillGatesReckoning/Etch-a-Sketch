@@ -34,8 +34,11 @@ function addDivAttributes() {
     divs.forEach((div) => {
     div.style.width = `${oneBlockSideLength}px`;
     div.style.height = `${oneBlockSideLength}px`;
+    div.style.backgroundColor = "white";
     div.addEventListener("mouseover", () => {
-        div.style.backgroundColor = "red";
+        if (div.style.backgroundColor === "white") {
+            changeSquareColor(div)
+        }
     })
 })
 }
@@ -46,4 +49,9 @@ function deleteGrid() {
     divsToDelete.forEach((divToDelete) => {
         divToDelete.remove()
     })
+}
+
+function changeSquareColor(div) {
+    let rgb = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+    div.style.backgroundColor = rgb;
 }
