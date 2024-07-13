@@ -1,4 +1,5 @@
 let gridSize = 16;
+const sideLengthInPx = 960;
 createDivs(16);
 
 const gridCreateButton = document.querySelector("#gridCreate");
@@ -30,15 +31,13 @@ function createDivs(size) {
 
 function addDivAttributes() {
     const divs = document.querySelectorAll(".manyDiv");
-    const oneBlockSideLength = Math.sqrt((960 * 960) / (gridSize * gridSize));
+    const oneBlockSideLength = Math.sqrt((sideLengthInPx * sideLengthInPx) / (gridSize * gridSize));
     divs.forEach((div) => {
     div.style.width = `${oneBlockSideLength}px`;
     div.style.height = `${oneBlockSideLength}px`;
     div.style.backgroundColor = "white";
     div.addEventListener("mouseover", () => {
-        if (div.style.backgroundColor === "white") {
-            changeSquareColor(div)
-        }
+    changeSquareColor(div)
     })
 })
 }
@@ -52,6 +51,14 @@ function deleteGrid() {
 }
 
 function changeSquareColor(div) {
-    let rgb = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
-    div.style.backgroundColor = rgb;
+    if (div.style.backgroundColor === "white") {
+        let rgb = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+        div.style.backgroundColor = rgb;
+        div.style.opacity = 0.1;
+    }
+    else {
+        let opacity = div.style.opacity;
+        let newOpacity = 0.1 + +opacity;
+        div.style.opacity = newOpacity;
+    }
 }
